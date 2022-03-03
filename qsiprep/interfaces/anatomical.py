@@ -279,8 +279,7 @@ class CalculateSOP(SimpleInterface):
         # to get a specific order
         def calculate_order(order):
             out_fname = fname_presuffix(
-                self.inputs.sh_nifti, suffix="q-%d_SOP.nii.gz" % order,
-                use_ext=False,
+                self.inputs.sh_nifti, suffix="q-%d_SOP" % order,
                 newpath=runtime.cwd)
             order_data = calculate_steinhardt(sh_l, sh_m, sh_data, order)
             # Save with the new name in the sandbox
