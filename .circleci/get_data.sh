@@ -20,7 +20,7 @@ if [[ "${CIRCLECI}" = "true" ]]; then
 else
   IN_CI="false"
   NTHREADS=1
-  OMP_NTHREADS=2
+  OMP_NTHREADS=1
 fi
 export IN_CI NTHREADS OMP_NTHREADS
 
@@ -45,7 +45,7 @@ run_qsiprep_cmd () {
       QSIPREP_RUN="${QSIPREP_RUN} --patch-qsiprep ${LOCAL_PATCH}"
     fi
   fi
-  echo "${QSIPREP_RUN} --nthreads ${NTHREADS} --omp-nthreads ${OMP_NTHREADS}"
+  echo "${QSIPREP_RUN} --nthreads ${NTHREADS} --omp-nthreads ${OMP_NTHREADS} --stop-on-first-crash"
 }
 
 

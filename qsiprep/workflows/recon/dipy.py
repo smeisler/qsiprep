@@ -505,3 +505,18 @@ def init_dipy_dki_recon_wf(omp_nthreads, available_anatomical_data, name="dipy_d
 
     workflow.__desc__ = desc
     return workflow
+
+
+def init_recobundles_wf(omp_nthreads, available_anatomical_data, name="dipy_mapmri_recon",
+                              output_suffix="", params={}):
+
+    inputnode = pe.Node(niu.IdentityInterface(fields=recon_workflow_input_fields),
+                        name="inputnode")
+    outputnode = pe.Node(
+        niu.IdentityInterface(
+            fields=['bundles']),
+        name="outputnode")
+
+    workflow = Workflow(name=name)
+
+    return workflow
